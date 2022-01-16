@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+  .card {
+    @apply m-10 flex justify-between items-center w-560 h-69 border-2 border-gray-500 pl-2.5 px-3.5
+  }
+  
+  .left {
+    @apply h-7 w-7 text-gray-400 mr-2 ml-1.5
+  }
+
+  .center {
+    @apply flex items-center flex-grow
+  }
+
+  .right {
+    @apply flex
+  }
+
+  .rightContent {
+    @apply bg-gray-200 p-2 rounded-md  text-gray-500
+  }
+
+  .svg {
+    @apply h-6 w-6
+  }
+}
