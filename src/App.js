@@ -4,15 +4,15 @@ import Card from "./components/Card";
 import { useState } from "react";
 import { arrayMoveImmutable } from "array-move";
 
-const SortableItem = SortableElement(({value}) => (
-  <div>{value}</div>
+const SortableItem = SortableElement(({value, count}) => (
+  <div className={count}>{value}</div>
 ));
 
-const SortableList = SortableContainer(({items}) => {
+const SortableList = SortableContainer(({items, setitems}) => {
   return (
     <div>
       {items.map((value, index) => (
-        <SortableItem key={index} index={index} value={value} />
+        <SortableItem key={index} index={index} value={ <Card id={value.id} status={value.status} item={value} setitems={setitems}/>} />
       ))}
     </div>
   );
@@ -21,7 +21,24 @@ const SortableList = SortableContainer(({items}) => {
 const App = () => {
   const [items, setitems] = useState(
     {
-      items:[<Card title="1"/>, <Card title="2"/>, <Card title="3"/>, <Card title="4"/>]
+      items:[
+        {
+          id: '1',
+          status:false
+        },
+        {
+          id: '2',
+          status:false
+        },
+        {
+          id: '3',
+          status:false
+        },
+        {
+          id: '4',
+          status:false
+        }
+      ]
     }
   )
     
@@ -36,6 +53,8 @@ const App = () => {
       items={items.items} 
       onSortEnd={onSortEnd} 
       distance={1}
+      axis="y"
+      setitems={setitems}
     />
   );
 };
